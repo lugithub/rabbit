@@ -45,6 +45,7 @@ export default function Query({
   const { search } = useContext(GithubContext);
 
   useEffect(() => {
+    dispatch({});
     search(query, variables).subscribe(
       data => dispatch({ data }),
       error => dispatch({ error }),

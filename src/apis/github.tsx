@@ -1,5 +1,4 @@
 import { ajax } from 'rxjs/ajax';
-import { delay } from 'rxjs/operators';
 import queryString from 'query-string';
 import React from 'react';
 
@@ -10,7 +9,7 @@ export function search(query: string, variables: { [key: string]: any }) {
         variables
       )}`
     )
-    .pipe(delay(3000));
+    .pipe();
 }
 
 export const GithubContext = React.createContext({ search });

@@ -14,7 +14,7 @@ it('returns observable', () => {
     expect(getJSON).toBeCalledWith(
       `https://api.github.com/search/users?foo=foo`
     );
-    expectObservable(users$).toBe('-- 2999ms a|', {
+    expectObservable(users$).toBe('-a|', {
       a: { items: [{ login: `foo` }] }
     });
   });
