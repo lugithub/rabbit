@@ -1,10 +1,15 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-function Fade(props: { children: any; in: boolean }) {
+interface FadeProps {
+  children: any;
+  inx: boolean;
+}
+
+function Fade({ children, inx }: FadeProps) {
   return (
-    <CSSTransition in={props.in} timeout={1000} className="fade">
-      {props.children}
+    <CSSTransition in={inx} timeout={3000} className="fade">
+      {children}
     </CSSTransition>
   );
 }
@@ -24,7 +29,7 @@ export default class HiddenMessage extends React.Component<
     return (
       <div>
         <button onClick={this.toggle}>Toggle</button>
-        <Fade in={this.state.show}>
+        <Fade inx={this.state.show}>
           <div>Hello world</div>
         </Fade>
       </div>
