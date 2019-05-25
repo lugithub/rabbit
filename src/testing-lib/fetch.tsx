@@ -8,7 +8,7 @@ function reducer(
   if (action.data || action.error) {
     return { loading: false, ...action };
   } else {
-    return state;
+    return { ...state, loading: true };
   }
 }
 export default function Fetch({ url }: { url: string }) {
@@ -16,7 +16,7 @@ export default function Fetch({ url }: { url: string }) {
 
   return (
     <>
-      <p>{state.data || state.error}</p>
+      <p>{state.loading ? 'loading' : state.data || state.error}</p>
       <button
         disabled={!!state.data || !!state.error}
         onClick={() => {

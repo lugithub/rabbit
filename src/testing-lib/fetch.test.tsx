@@ -23,8 +23,10 @@ it('loads and displays greeting', async () => {
     headers: {},
     config: {}
   });
-
   fireEvent.click(getByText('Load Greeting'));
+
+  const loading = await waitForElement(() => getByText('loading'));
+  expect(loading).toHaveTextContent('hello there');
 
   const hello = await waitForElement(() => getByText('hello there'));
   expect(hello).toBeInTheDocument();
