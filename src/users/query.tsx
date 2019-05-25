@@ -4,12 +4,12 @@ import { GithubContext } from '../apis/github';
 
 export interface State {
   fetching: boolean;
-  data?: object;
+  data?: { items: { login: string }[] };
   error?: object;
 }
 
 interface Action {
-  data?: object;
+  data?: { items: { login: string }[] };
   error?: object;
 }
 
@@ -21,7 +21,6 @@ function queryReducer(state: State, action: Action) {
     };
   } else {
     return {
-      ...action,
       fetching: true
     };
   }
@@ -47,7 +46,7 @@ export default function Query({
   useEffect(() => {
     dispatch({});
     search(query, variables).subscribe(
-      data => dispatch({ data }),
+      (data: { items: { login: string }[] }) => dispatch({ data }),
       error => dispatch({ error }),
       console.log.bind(console, `complete`)
     );
