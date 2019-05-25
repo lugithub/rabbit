@@ -6,16 +6,22 @@ import {
   waitForElement
 } from 'react-testing-library';
 import 'jest-dom/extend-expect';
-import axiosMock from 'axios';
+import axios from 'axios';
 import Fetch from './fetch';
 
 afterEach(cleanup);
+
+const axiosMock = axios as jest.Mocked<typeof axios>;
 
 it('loads and displays greeting', async () => {
   const { getByText } = render(<Fetch url="/greeting" />);
 
   axiosMock.get.mockResolvedValueOnce({
-    data: 'hello there'
+    data: 'hello there',
+    status: 200,
+    statusText: 'OK',
+    headers: {},
+    config: {}
   });
 
   fireEvent.click(getByText('Load Greeting'));
