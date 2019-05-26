@@ -2,10 +2,8 @@ import React from 'react';
 import { ajax } from 'rxjs/ajax';
 import { of, throwError } from 'rxjs';
 import Query, { State } from './query';
-import { render, cleanup, waitForElement } from 'react-testing-library';
+import { render, waitForElement } from 'react-testing-library';
 import 'jest-dom/extend-expect';
-
-afterEach(cleanup);
 
 it('renders initally', async () => {
   const children = (queryState: State) =>

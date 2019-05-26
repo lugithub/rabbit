@@ -1,15 +1,8 @@
 import React from 'react';
-import {
-  render,
-  fireEvent,
-  cleanup,
-  waitForElement
-} from 'react-testing-library';
+import { render, fireEvent, waitForElement } from 'react-testing-library';
 import 'jest-dom/extend-expect';
 import axios from 'axios';
 import Fetch from './fetch';
-
-afterEach(cleanup);
 
 const axiosMock = axios as jest.Mocked<typeof axios>;
 
