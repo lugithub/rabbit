@@ -5,29 +5,27 @@ import Query, { State } from './query';
 import { render, waitForElement } from 'react-testing-library';
 import 'jest-dom/extend-expect';
 
-it('renders initally', async () => {
+it('renders initally', () => {
   const children = (queryState: State) =>
     queryState.fetching ? 'fetching true' : 'fetching false';
-  const { getByText } = render(
+  const { findByText } = render(
     <Query query="users" variables={{ foo: 'foo' }} children={children} />
   );
 
-  const element = await waitForElement(() => getByText('fetching false'));
-  expect(element).toHaveTextContent('fetching false');
+  return findByText('fetching false');
 });
 
-it('renders fetching true', async () => {
+it('renders fetching true', () => {
   const children = (queryState: State) =>
     queryState.fetching ? 'fetching true' : 'fetching false';
-  const { getByText } = render(
+  const { findByText } = render(
     <Query query="users" variables={{ foo: 'foo' }} children={children} />
   );
 
-  const element = await waitForElement(() => getByText('fetching true'));
-  expect(element).toHaveTextContent('fetching true');
+  return findByText('fetching true');
 });
 
-it('renders items', async () => {
+it('renders items', () => {
   const children = (queryState: State) => {
     if (queryState.data && queryState.data.items) {
       return (
@@ -47,13 +45,14 @@ it('renders items', async () => {
     return of({ items: [{ login: `foo` }] });
   });
 
-  const { getByText } = render(
+  const { findByText } = render(
     <Query query="users" variables={{ foo: 'foo' }} children={children} />
   );
-  const element = await waitForElement(() => getByText('foo'));
+
+  return findByText('foo');
 });
 
-it('renders error', async () => {
+it('renders error', () => {
   const children = (queryState: State) => {
     if (queryState.error) {
       return queryState.error;
@@ -66,9 +65,9 @@ it('renders error', async () => {
     return throwError('my error');
   });
 
-  const { getByText } = render(
+  const { findByText } = render(
     <Query query="users" variables={{ foo: 'foo' }} children={children} />
   );
 
-  const element = await waitForElement(() => getByText('my error'));
+  return findByText('my error');
 });
