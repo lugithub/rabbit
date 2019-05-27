@@ -6,12 +6,13 @@ import Query from './users/query';
 import { pathOr } from 'ramda';
 import { State } from './users/query';
 import Fetch from './testing-lib/fetch';
-import HiddenMessage from './testing-lib/hidden-message'
-
+import HiddenMessage from './testing-lib/hidden-message';
+import Button from './principal1/button';
 const App: React.FC = () => {
   return (
     <div className="App">
-      <HiddenMessage initialShow={false}/>
+      <Button color="red">principal 1</Button>
+      <HiddenMessage initialShow={false} />
       <Fetch url="https://www.google.com" />
       <Query query="users" variables={{ q: `tom repos:>42 followers:>1000` }}>
         {(queryState: State) => {
