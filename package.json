@@ -23,7 +23,9 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "plugins": ["react-hooks"],
+    "plugins": [
+      "react-hooks"
+    ],
     "rules": {
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn"
@@ -50,6 +52,7 @@
     "@types/react-transition-group": "^2.9.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
     "jest-dom": "^3.2.2",
     "react-test-renderer": "^16.8.6",
     "react-testing-library": "^7.0.1"
