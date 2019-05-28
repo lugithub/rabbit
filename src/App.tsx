@@ -8,9 +8,12 @@ import { State } from './users/query';
 import Fetch from './testing-lib/fetch';
 import HiddenMessage from './testing-lib/hidden-message';
 import Button from './principal1/button';
+import IntervalCounter from './hooks/interval-counter';
+
 const App: React.FC = () => {
   return (
     <div className="App">
+      <IntervalCounter />
       <Button color="red">principal 1</Button>
       <HiddenMessage initialShow={false} />
       <Fetch url="https://www.google.com" />
