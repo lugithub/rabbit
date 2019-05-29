@@ -9,10 +9,12 @@ import Fetch from './testing-lib/fetch';
 import HiddenMessage from './testing-lib/hidden-message';
 import Button from './principal1/button';
 import IntervalCounter from './hooks/interval-counter';
+import Clock from './hooks/clock';
 
 const App: React.FC = () => {
   return (
     <div className="App">
+      <Clock />
       <IntervalCounter />
       <Button color="red">principal 1</Button>
       <HiddenMessage initialShow={false} />
@@ -24,7 +26,7 @@ const App: React.FC = () => {
               {pathOr([], ['data', 'items'])(queryState).map(
                 (item: { login: string }) => (
                   <li key={item.login}>{item.login}</li>
-                )
+                ),
               )}
             </ul>
           );
