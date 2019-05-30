@@ -11,10 +11,11 @@ import Button from './principal1/button';
 import IntervalCounter from './hooks/interval-counter';
 import Clock from './hooks/clock';
 import CounterUseInterval from './hooks/counter-use-interval';
-
+import TodoApp from './todos-connect/todo-app';
 const App: React.FC = () => {
   return (
     <div className="App">
+      <TodoApp />
       <CounterUseInterval />
       <Clock />
       <IntervalCounter />
@@ -28,7 +29,7 @@ const App: React.FC = () => {
               {pathOr([], ['data', 'items'])(queryState).map(
                 (item: { login: string }) => (
                   <li key={item.login}>{item.login}</li>
-                )
+                ),
               )}
             </ul>
           );
