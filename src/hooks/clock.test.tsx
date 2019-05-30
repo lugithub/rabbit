@@ -10,8 +10,13 @@ it('renders 0', () => {
 it('renders 10', () => {
   const timeout = 20000;
   jest.setTimeout(timeout);
-  const { container, debug } = render(<Clock />);
-  return findByText(container, 'Seconds: 10', undefined, { timeout }).then(
-    debug,
+  const { container } = render(<Clock />);
+  return findByText(container, 'Seconds: 10', undefined, { timeout });
+});
+
+it('throws 11', () => {
+  const { container } = render(<Clock />);
+  return expect(findByText(container, 'Seconds: 11')).rejects.toThrow(
+    'Seconds: 11'
   );
 });
