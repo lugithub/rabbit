@@ -17,7 +17,7 @@ export interface ToggleTodo {
 }
 
 export interface SetFilter {
-  filter: string;
+  filter: VISIBILITY_FILTERS;
 }
 
 export const addTodo = (content: string) => ({

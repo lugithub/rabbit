@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
 import visibilityFilter from './visibility-filters';
-// import todos from './todos';
+import todos from './todos';
 
-export default combineReducers({ visibilityFilter });
+export default combineReducers({ todos, visibilityFilter });
