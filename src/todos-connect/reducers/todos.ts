@@ -1,6 +1,6 @@
 import { Action, ActionType, AddTodo, ToggleTodo } from '../actions';
 
-interface ByIds {
+export interface ByIds {
   [key: string]: { id: number; content: string; completed: boolean };
 }
 
@@ -9,12 +9,12 @@ const initialState: {
   byIds: ByIds;
 } = {
   allIds: [],
-  byIds: {},
+  byIds: {}
 };
 
 export default function(
   state = initialState,
-  action: Action<AddTodo | ToggleTodo>,
+  action: Action<AddTodo | ToggleTodo>
 ) {
   switch (action.type) {
     case ActionType.ADD_TODO: {
@@ -26,9 +26,9 @@ export default function(
           ...state.byIds,
           [id]: {
             content,
-            completed: false,
-          },
-        },
+            completed: false
+          }
+        }
       };
     }
     case ActionType.TOGGLE_TODO: {
@@ -39,9 +39,9 @@ export default function(
           ...state.byIds,
           [id]: {
             ...state.byIds[id],
-            completed: !state.byIds[id].completed,
-          },
-        },
+            completed: !state.byIds[id].completed
+          }
+        }
       };
     }
     default:

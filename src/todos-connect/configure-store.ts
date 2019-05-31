@@ -1,4 +1,13 @@
 import { createStore } from 'redux';
-import rootReducer from './reducers';
+import rootReducer, { ByIds } from './reducers';
+import { VISIBILITY_FILTERS } from './constants';
+
+export interface Store {
+  todos: {
+    allIds: number[];
+    byIds: ByIds;
+  };
+  visibilityFilter: VISIBILITY_FILTERS;
+}
 
 export default createStore(rootReducer);
