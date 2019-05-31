@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addTodo } from '../actions';
 
@@ -6,38 +6,21 @@ interface AddTodoProps {
   addTodo: (input: string) => {};
 }
 
-interface AddTodoState {
-  input: string;
-}
+function AddTodo({ addTodo }: AddTodoProps) {
+  const [input, setInput] = useState('');
 
-class AddTodo extends React.Component<AddTodoProps, AddTodoState> {
-  constructor({ addTodo }: { addTodo: (input: string) => {} }) {
-    super({ addTodo });
-    this.state = { input: '' };
+  function handleAddTodo() {
+    addTodo(input);
+    setInput('');
   }
-
-  updateInput = (input: string) => {
-    this.setState({ input });
-  };
-
-  handleAddTodo = () => {
-    this.props.addTodo(this.state.input);
-    this.setState({ input: '' });
-  };
-
-  render() {
-    return (
-      <div>
-        <input
-          onChange={e => this.updateInput(e.target.value)}
-          value={this.state.input}
-        />
-        <button className="add-todo" onClick={this.handleAddTodo}>
-          Add Todo
-        </button>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <input onChange={e => setInput(e.target.value)} value={input} />
+      <button className="add-todo" onClick={handleAddTodo}>
+        Add Todo
+      </button>
+    </div>
+  );
 }
 
 export default connect(
