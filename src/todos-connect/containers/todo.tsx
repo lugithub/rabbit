@@ -9,7 +9,7 @@ interface TodoProps {
 }
 
 const Todo = ({ todo, toggleTodo }: TodoProps) => (
-  <li className="todo-item" onClick={() => toggleTodo(todo.id)}>
+  <li className="todo-item" onClick={toggleTodo.bind(null, todo.id)}>
     {todo && todo.completed ? '👌' : '👋'}{' '}
     <span
       className={cx(

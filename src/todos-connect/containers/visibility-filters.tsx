@@ -27,9 +27,7 @@ const VisibilityFilters = ({
               'filter',
               currentFilter === activeFilter && 'filter--active'
             )}
-            onClick={() => {
-              setFilter(currentFilter);
-            }}
+            onClick={setFilter.bind(null, currentFilter)}
           >
             {currentFilter}
           </span>

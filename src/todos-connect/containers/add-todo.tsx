@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addTodo } from '../actions';
-
+import { compose } from 'ramda';
 interface AddTodoProps {
   addTodo: typeof addTodo;
 }
@@ -9,14 +9,16 @@ interface AddTodoProps {
 function AddTodo({ addTodo }: AddTodoProps) {
   const [input, setInput] = useState('');
 
-  function handleAddTodo() {
-    addTodo(input);
-    setInput('');
-  }
   return (
     <div>
       <input onChange={e => setInput(e.target.value)} value={input} />
-      <button className="add-todo" onClick={handleAddTodo}>
+      <button
+        className="add-todo"
+        onClick={compose(
+          setInput.bind(null, ''),
+          addTodo.bind(null, input)
+        )}
+      >
         Add Todo
       </button>
     </div>
