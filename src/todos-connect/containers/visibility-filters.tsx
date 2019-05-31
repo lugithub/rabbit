@@ -3,14 +3,17 @@ import cx from 'classnames';
 import { connect } from 'react-redux';
 import { setFilter } from '../actions';
 import { VISIBILITY_FILTERS } from '../constants';
-import { Store } from '../configure-store';
-const VisibilityFilters = ({
-  activeFilter,
-  setFilter
-}: {
+import { State } from '../configure-store';
+
+interface VisibilityFiltersProps {
   activeFilter: VISIBILITY_FILTERS;
   setFilter: (currentFilter: VISIBILITY_FILTERS) => {};
-}) => {
+}
+
+const VisibilityFilters = ({
+  activeFilter,
+  setFilter,
+}: VisibilityFiltersProps) => {
   return (
     <div className="visibility-filters">
       {Object.keys(VISIBILITY_FILTERS).map(filterKey => {
@@ -22,7 +25,7 @@ const VisibilityFilters = ({
             key={`visibility-filter-${currentFilter}`}
             className={cx(
               'filter',
-              currentFilter === activeFilter && 'filter--active'
+              currentFilter === activeFilter && 'filter--active',
             )}
             onClick={() => {
               setFilter(currentFilter);
@@ -36,11 +39,11 @@ const VisibilityFilters = ({
   );
 };
 
-const mapStateToProps = (state: Store) => {
+const mapStateToProps = (state: State) => {
   return { activeFilter: state.visibilityFilter };
 };
-// export default VisibilityFilters;
+
 export default connect(
   mapStateToProps,
-  { setFilter }
+  { setFilter },
 )(VisibilityFilters);

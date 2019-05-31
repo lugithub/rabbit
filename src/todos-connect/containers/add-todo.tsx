@@ -2,10 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addTodo } from '../actions';
 
-class AddTodo extends React.Component<
-  { addTodo: (input: string) => {} },
-  { input: string }
-> {
+interface AddTodoProps {
+  addTodo: (input: string) => {};
+}
+
+interface AddTodoState {
+  input: string;
+}
+
+class AddTodo extends React.Component<AddTodoProps, AddTodoState> {
   constructor({ addTodo }: { addTodo: (input: string) => {} }) {
     super({ addTodo });
     this.state = { input: '' };

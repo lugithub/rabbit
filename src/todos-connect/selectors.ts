@@ -1,28 +1,28 @@
 import { VISIBILITY_FILTERS } from './constants';
-import { Store } from './configure-store';
+import { State } from './configure-store';
 
-export const getTodosState = (store: Store) => store.todos;
+export const getTodosState = (state: State) => state.todos;
 
-export const getTodoList = (store: Store) =>
-  getTodosState(store) ? getTodosState(store).allIds : [];
+export const getTodoList = (state: State) =>
+  getTodosState(state) ? getTodosState(state).allIds : [];
 
-export const getTodoById = (store: Store, id: number) => ({
-  ...getTodosState(store).byIds[id],
-  id
+export const getTodoById = (state: State, id: number) => ({
+  ...getTodosState(state).byIds[id],
+  id,
 });
 
 /**
  * example of a slightly more complex selector
- * select from store combining information from multiple reducers
+ * select from state combining information from multiple reducers
  */
-export const getTodos = (store: Store) =>
-  getTodoList(store).map(id => getTodoById(store, id));
+export const getTodos = (state: State) =>
+  getTodoList(state).map(id => getTodoById(state, id));
 
 export const getTodosByVisibilityFilter = (
-  store: Store,
-  visibilityFilter: VISIBILITY_FILTERS
+  state: State,
+  visibilityFilter: VISIBILITY_FILTERS,
 ) => {
-  const allTodos = getTodos(store);
+  const allTodos = getTodos(state);
   switch (visibilityFilter) {
     case VISIBILITY_FILTERS.COMPLETED:
       return allTodos.filter(todo => todo.completed);

@@ -1,21 +1,23 @@
 import { Action, ActionType, AddTodo, ToggleTodo } from '../actions';
 
 export interface ByIds {
-  [key: string]: { id: number; content: string; completed: boolean };
+  [key: string]: { content: string; completed: boolean };
 }
 
-const initialState: {
+export interface TodosState {
   allIds: number[];
   byIds: ByIds;
-} = {
+}
+
+const initialState = {
   allIds: [],
-  byIds: {}
+  byIds: {},
 };
 
-export default function(
-  state = initialState,
-  action: Action<AddTodo | ToggleTodo>
-) {
+export default function todos(
+  state: TodosState = initialState,
+  action: Action<AddTodo> | Action<ToggleTodo>, //at runtime, instance of Action<SetFilter> is passed here also
+): TodosState {
   switch (action.type) {
     case ActionType.ADD_TODO: {
       const { id, content } = action.payload as AddTodo;
@@ -26,9 +28,9 @@ export default function(
           ...state.byIds,
           [id]: {
             content,
-            completed: false
-          }
-        }
+            completed: false,
+          },
+        },
       };
     }
     case ActionType.TOGGLE_TODO: {
@@ -39,9 +41,9 @@ export default function(
           ...state.byIds,
           [id]: {
             ...state.byIds[id],
-            completed: !state.byIds[id].completed
-          }
-        }
+            completed: !state.byIds[id].completed,
+          },
+        },
       };
     }
     default:

@@ -3,19 +3,18 @@ import { connect } from 'react-redux';
 import cx from 'classnames';
 import { toggleTodo } from '../actions';
 
-const Todo = ({
-  todo,
-  toggleTodo
-}: {
+interface TodoProps {
   todo: { id: number; content: string; completed: boolean };
   toggleTodo: (id: number) => {};
-}) => (
+}
+
+const Todo = ({ todo, toggleTodo }: TodoProps) => (
   <li className="todo-item" onClick={() => toggleTodo(todo.id)}>
     {todo && todo.completed ? '👌' : '👋'}{' '}
     <span
       className={cx(
         'todo-item__text',
-        todo && todo.completed && 'todo-item__text--completed'
+        todo && todo.completed && 'todo-item__text--completed',
       )}
     >
       {todo.content}
@@ -23,8 +22,7 @@ const Todo = ({
   </li>
 );
 
-// export default Todo;
 export default connect(
   null,
-  { toggleTodo }
+  { toggleTodo },
 )(Todo);
