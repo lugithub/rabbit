@@ -7,12 +7,12 @@ import { State } from '../configure-store';
 
 interface VisibilityFiltersProps {
   activeFilter: VISIBILITY_FILTERS;
-  setFilter: (currentFilter: VISIBILITY_FILTERS) => {};
+  setFilter: typeof setFilter;
 }
 
 const VisibilityFilters = ({
   activeFilter,
-  setFilter,
+  setFilter
 }: VisibilityFiltersProps) => {
   return (
     <div className="visibility-filters">
@@ -25,7 +25,7 @@ const VisibilityFilters = ({
             key={`visibility-filter-${currentFilter}`}
             className={cx(
               'filter',
-              currentFilter === activeFilter && 'filter--active',
+              currentFilter === activeFilter && 'filter--active'
             )}
             onClick={() => {
               setFilter(currentFilter);
@@ -45,5 +45,5 @@ const mapStateToProps = (state: State) => {
 
 export default connect(
   mapStateToProps,
-  { setFilter },
+  { setFilter }
 )(VisibilityFilters);

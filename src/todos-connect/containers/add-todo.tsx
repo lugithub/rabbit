@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { addTodo } from '../actions';
 
 interface AddTodoProps {
-  addTodo: (input: string) => {};
+  addTodo: typeof addTodo;
 }
 
 function AddTodo({ addTodo }: AddTodoProps) {
@@ -25,5 +25,5 @@ function AddTodo({ addTodo }: AddTodoProps) {
 
 export default connect(
   null,
-  { addTodo },
+  { addTodo }
 )(AddTodo);
