@@ -26,3 +26,23 @@ export const getTodosByVisibilityFilter = createSelector(
     }
   }
 );
+
+export const makeGetVisibilityFilter = () => (state: State) =>
+  state.visibilityFilter;
+
+export const makeGetTodosByVisibilityFilter = () =>
+  createSelector(
+    getTodos,
+    getVisibilityFilter,
+    (todos, visibilityFilter) => {
+      switch (visibilityFilter) {
+        case VISIBILITY_FILTERS.COMPLETED:
+          return todos.filter(todo => todo.completed);
+        case VISIBILITY_FILTERS.INCOMPLETE:
+          return todos.filter(todo => !todo.completed);
+        case VISIBILITY_FILTERS.ALL:
+        default:
+          return todos;
+      }
+    }
+  );
