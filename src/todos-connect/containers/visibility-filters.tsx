@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { setFilter } from '../actions';
 import { VISIBILITY_FILTERS } from '../constants';
 import { State } from '../configure-store';
+import { getVisibilityFilter } from '../selectors';
 
 interface VisibilityFiltersProps {
   activeFilter: VISIBILITY_FILTERS;
@@ -38,7 +39,7 @@ const VisibilityFilters = ({
 };
 
 const mapStateToProps = (state: State) => {
-  return { activeFilter: state.visibilityFilter };
+  return { activeFilter: getVisibilityFilter(state) };
 };
 
 export default connect(
