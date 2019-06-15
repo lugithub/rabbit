@@ -14,7 +14,7 @@ it('loads and displays greeting', async () => {
     status: 200,
     statusText: 'OK',
     headers: {},
-    config: {}
+    config: {},
   });
   fireEvent.click(getByText('Load Greeting'));
 
@@ -30,7 +30,7 @@ it('loads and displays error', async () => {
   const { getByText } = render(<Fetch url="/greeting" />);
 
   axiosMock.get.mockRejectedValue({
-    data: 'error there'
+    data: 'error there',
   });
 
   fireEvent.click(getByText('Load Greeting'));

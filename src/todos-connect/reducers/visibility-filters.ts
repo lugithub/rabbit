@@ -3,7 +3,7 @@ import { VISIBILITY_FILTERS } from '../constants';
 
 export default function visibilityFilter(
   state = VISIBILITY_FILTERS.ALL,
-  action: Action<SetFilter>,
+  action: Action<SetFilter>
 ) {
   switch (action.type) {
     case ActionType.SET_FILTER: {

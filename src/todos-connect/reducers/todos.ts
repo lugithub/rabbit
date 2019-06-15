@@ -11,7 +11,7 @@ export interface TodosState {
 
 const initialState = {
   allIds: [],
-  byIds: {}
+  byIds: {},
 };
 
 // function isAddTodo(
@@ -61,9 +61,9 @@ export default function todos(
           ...state.byIds,
           [id]: {
             content,
-            completed: false
-          }
-        }
+            completed: false,
+          },
+        },
       };
     }
     case ActionType.TOGGLE_TODO: {
@@ -74,9 +74,9 @@ export default function todos(
           ...state.byIds,
           [id]: {
             ...state.byIds[id],
-            completed: !state.byIds[id].completed
-          }
-        }
+            completed: !state.byIds[id].completed,
+          },
+        },
       };
     }
     default:

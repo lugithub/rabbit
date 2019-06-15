@@ -13,7 +13,7 @@ interface VisibilityFiltersProps {
 
 const VisibilityFilters = ({
   activeFilter,
-  setFilter
+  setFilter,
 }: VisibilityFiltersProps) => {
   return (
     <div className="visibility-filters">

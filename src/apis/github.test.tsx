@@ -15,7 +15,7 @@ it('returns observable', () => {
       `https://api.github.com/search/users?foo=foo`
     );
     expectObservable(users$).toBe('- 3s a|', {
-      a: { items: [{ login: `foo` }] }
+      a: { items: [{ login: `foo` }] },
     });
   });
 });

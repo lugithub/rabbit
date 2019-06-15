@@ -29,7 +29,7 @@ const App: React.FC = () => {
               {pathOr([], ['data', 'items'])(queryState).map(
                 (item: { login: string }) => (
                   <li key={item.login}>{item.login}</li>
-                ),
+                )
               )}
             </ul>
           );

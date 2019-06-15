@@ -9,7 +9,9 @@ import HiddenMessage from './hidden-message';
 
 jest.mock('react-transition-group', () => {
   return {
-    CSSTransition: jest.fn(({ children, in: show }) => (show ? children : null))
+    CSSTransition: jest.fn(({ children, in: show }) =>
+      show ? children : null
+    ),
   };
 });
 

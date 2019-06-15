@@ -17,11 +17,11 @@ function queryReducer(state: State, action: Action) {
   if (action.error || action.data) {
     return {
       ...action,
-      fetching: false
+      fetching: false,
     };
   } else {
     return {
-      fetching: true
+      fetching: true,
     };
   }
 }
@@ -30,7 +30,7 @@ export default function Query({
   query,
   variables,
   children,
-  normalize = identity
+  normalize = identity,
 }: {
   query: string;
   variables: { [key: string]: any };
@@ -38,7 +38,7 @@ export default function Query({
   normalize?: any;
 }) {
   const [queryState, dispatch] = useReducer(queryReducer, {
-    fetching: false
+    fetching: false,
   });
 
   const { search } = useContext(GithubContext);
