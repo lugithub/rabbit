@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addTodo } from '../actions';
 import { compose } from 'ramda';
-interface AddTodoProps {
-  addTodo: typeof addTodo;
-}
 
-function AddTodo({ addTodo }: AddTodoProps) {
+function AddTodo() {
   const [input, setInput] = useState('');
+  const dispatch = useDispatch();
 
   return (
     <div>
@@ -16,7 +14,7 @@ function AddTodo({ addTodo }: AddTodoProps) {
         className="add-todo"
         onClick={compose(
           setInput.bind(null, ''),
-          addTodo.bind(null, input)
+          dispatch.bind(null, addTodo(input))
         )}
       >
         Add Todo
@@ -25,7 +23,4 @@ function AddTodo({ addTodo }: AddTodoProps) {
   );
 }
 
-export default connect(
-  null,
-  { addTodo }
-)(AddTodo);
+export default AddTodo;
