@@ -11,7 +11,9 @@ import Button from './principal1/button';
 import IntervalCounter from './hooks/interval-counter';
 import Clock from './hooks/clock';
 import CounterUseInterval from './hooks/counter-use-interval';
-import TodoApp from './todos-connect/todo-app';
+// import TodoApp from './todos-connect/todo-app';
+import TodoApp from './todos-hook/todo-app';
+
 const App: React.FC = () => {
   return (
     <div className="App">

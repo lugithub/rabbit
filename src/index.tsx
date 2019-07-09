@@ -4,7 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import store from './todos-connect/configure-store';
+// import store from './todos-connect/configure-store';
+import store from './todos-hook/configure-store';
 
 ReactDOM.render(
   <Provider store={store}>
