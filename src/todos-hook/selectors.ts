@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { identity } from 'ramda';
 import { VISIBILITY_FILTERS } from './constants';
 import { State } from './configure-store';
 
@@ -33,4 +34,9 @@ export const getTodosByVisibilityFilter = createSelector(
         return allTodos;
     }
   }
+);
+
+export const getActiveFilter = createSelector(
+  (state: State) => state.visibilityFilter,
+  identity
 );
